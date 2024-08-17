@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+            const emailOrMobile = document.getElementById('emailOrMobile').value;
+            const password = document.getElementById('password').value;
+
+            const validEmailOrMobile = 'ABC@gmail.com'; // Set your valid email
+            const validPassword = 'ssvh'; // Set your valid password
+
+            if (emailOrMobile !== validEmailOrMobile || password !== validPassword) {
+                alert('Wrong email/mobile number or password. Please try again.');
+            } else {
+                // Redirect to the desired page upon successful sign-in
+                window.location.href = 'choose your profile.html'; // Change to your target page
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+        body {
+            background-image: url('org.jpg'); /* Add your background image URL here */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+        }
+        .sign-in-code-box {
+            background-color: #555555; /* Grey background */
+            color: #ffffff; /* White text */
+            padding: 0.75rem; /* Padding for the box */
+            border-radius: 0.375rem; /* Rounded corners */
+            display: inline-block; /* Inline-block for the box */
+            text-decoration: none; /* Remove underline */
+            text-align: center; /* Center text */
+            width: 100%; /* Full width */
+            max-width: 100%; /* Ensures it does not exceed container width */
+            box-sizing: border-box; /* Includes padding in width calculation */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+        .sign-in-code-box:hover {
+            background-color: #666666; /* Darker grey on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-black bg-opacity-80">
+        <div class="bg-black bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 class="text-3xl font-bold text-red-600 mb-6 text-center">ZEDFLIX</h1>
+            <h2 class="text-white text-xl mb-4">Sign In</h2>
+            <form onsubmit="validateForm(event)"> <!-- Use the validateForm function on submit -->
+                <div class="mb-4">
+                    <input type="text" id="emailOrMobile" placeholder="Email or mobile number" class="w-full p-2 rounded border border-zinc-600 bg-zinc-800 text-white" required>
+                </div>
+                <div class="mb-4">
+                    <input type="password" id="password" placeholder="Password" class="w-full p-2 rounded border border-zinc-600 bg-zinc-800 text-white" required>
+                </div>
+                <button type="submit" class="bg-red-600 text-white w-full p-2 rounded hover:bg-red-500">Sign In</button>
+            </form>
+            <div class="text-center text-zinc-400 my-4">OR</div>
+            <div class="text-center mb-4">
+                <a href="Use code for sign in.html" class="sign-in-code-box">Use a sign-in code</a> <!-- Change to your sign-in code page -->
+            </div>
+            <div class="text-center mb-4">
+                <a href="forget password.html" class="text-zinc-400 hover:underline">Forgot password?</a> <!-- Change to your forgot password page -->
+            </div>
+            <div class="flex items-center justify-center mb-4">
+                <input type="checkbox" id="rememberMe" class="mr-2">
+                <label for="rememberMe" class="text-zinc-400">Remember me</label>
+            </div>
+            <div class="text-center text-zinc-400">
+                New to ZEDFLIX? <a href="get started page.html" class="text-red-600 hover:underline">Sign up now.</a> <!-- Change to your sign-up page -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

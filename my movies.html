@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #141414;
+            color: #e5e5e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #e50914;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .movie-poster {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+            padding-top: 56.25%; /* Aspect Ratio 16:9 */
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .movie-poster img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .movie-poster img.full-image {
+            object-fit: contain; /* Display the entire image for this specific poster */
+        }
+
+        .movie-poster:hover {
+            transform: scale(1.05);
+        }
+
+        .badge-top,
+        .badge-new,
+        .badge-continue {
+            position: absolute;
+            left: 5px;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .badge-top {
+            top: 5px;
+            background-color: #e50914;
+            color: white;
+        }
+
+        .badge-new {
+            bottom: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .badge-continue {
+            bottom: 5px;
+            background-color: #e50914;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Blockbuster Movies</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="when i open.html" class="movie-poster">
+                <img src="Screenshot 2024-08-14 193900.png" alt="Mask">
+                <span class="badge-top">TOP 10</span>
+                <span class="badge-new">Recently added</span>
+            </a>
+            <a href="when i open - Copy.html" class="movie-poster">
+                <img src="friendship.jpg" alt="ERIENDSHIP">
+                <span class="badge-top">TOP 10</span>
+                <span class="badge-new">Recently added</span>
+            </a>
+            <a href="https://www.example.com/animal" class="movie-poster"> 
+                <img src="animal.png" alt="Animal">
+                <span class="badge-top">TOP 10</span>
+                <span class="badge-new">Recently added</span>
+            </a>
+            <a href="https://www.example.com/kingsman2" class="movie-poster">
+                <img src="leo.png" alt="Leo">
+                <span class="badge-top">TOP 10</span>
+            </a>
+        </div>
+
+        <h2>New on ZEDFLIX</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="https://www.example.com/super-mario" class="movie-poster">
+                <img src="Screenshot 2024-08-15 193013.png" alt="The Super Mario Bros Movie">
+                <span class="badge-top">TOP 10</span>
+            </a>
+            <a href="https://www.example.com/hassen-dillruba" class="movie-poster">
+                <img src="kalki.jpg" alt="Hassen Dillruba">
+                <span class="badge-top">TOP 10</span>
+            </a>
+            <a href="https://www.example.com/renfield" class="movie-poster">
+                <img src="Indian2.jpg" alt="Renfield">
+            </a>
+            <a href="https://www.example.com/beast" class="movie-poster">
+                <img src="beast.jpg" alt="Beast">
+            </a>
+        </div>
+
+        <h2>Continue Watching</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="https://www.example.com/citadel" class="movie-poster">
+                <img src="rrr.jpg" alt="Citadel">
+                <span class="badge-continue">Continue Watching</span>
+            </a>
+            <a href="https://www.example.com/agent" class="movie-poster">
+                <img src="thuglife.jpg" alt="Agent">
+                <span class="badge-continue">Continue Watching</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
